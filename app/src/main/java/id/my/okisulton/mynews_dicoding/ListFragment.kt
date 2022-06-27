@@ -1,14 +1,13 @@
 package id.my.okisulton.mynews_dicoding
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import id.my.okisulton.mynews_dicoding.adapter.NewsAdapter
@@ -16,55 +15,53 @@ import id.my.okisulton.mynews_dicoding.databinding.FragmentListBinding
 import id.my.okisulton.mynews_dicoding.model.News
 import id.my.okisulton.mynews_dicoding.utils.Constants.INTENT_WITH_DATA
 import id.my.okisulton.mynews_dicoding.utils.getDataFromAsset
-import java.io.FileOutputStream
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
 class ListFragment : Fragment() {
 
     private var _binding: FragmentListBinding? = null
-    private lateinit var newsAdapter: NewsAdapter
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
+
+    private lateinit var newsAdapter: NewsAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         _binding = FragmentListBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRv()
         getNews()
+        setupListener()
+    }
+
+    private fun setupListener() {
+        binding.fab.setOnClickListener {
+            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+        }
     }
 
     private fun setupRv() {
         newsAdapter = NewsAdapter(arrayListOf(),
-        object : NewsAdapter.OnAdapterListener{
-            override fun onClick(result: News.ArticlesItem) {
-                val moveData = Intent(context, DetailActivity::class.java)
-                moveData.putExtra(INTENT_WITH_DATA, result)
-                startActivity(moveData)
-            }
+            object : NewsAdapter.OnAdapterListener {
+                override fun onClick(result: News.ArticlesItem) {
+                    val moveData = Intent(context, DetailActivity::class.java)
+                    moveData.putExtra(INTENT_WITH_DATA, result)
+                    startActivity(moveData)
+                }
 
-            override fun onShareClick(result: News.ArticlesItem) {
-                val urlToShare = result.url
-                shareNews(urlToShare)
-            }
+                override fun onShareClick(result: News.ArticlesItem) {
+                    val urlToShare = result.url
+                    shareNews(urlToShare)
+                }
 
-            override fun onFavoriteClick(result: News.ArticlesItem) {
-                showToast("<<DUMMY>> -- Berhasil menambahkan ke favorite ${result.title}")
-
-            }
-        })
+                override fun onFavoriteClick(result: News.ArticlesItem) {
+                    showToast("<<DUMMY>> -- Berhasil menambahkan ke favorite ${result.title}")
+                }
+            })
 
         binding.rvNews.apply {
             layoutManager = LinearLayoutManager(context)
@@ -73,7 +70,7 @@ class ListFragment : Fragment() {
     }
 
     private fun getNews() {
-        val jsonFile = getDataFromAsset(requireContext() , "news.json")
+        val jsonFile = getDataFromAsset(requireContext(), "news.json")
         val news = Gson().fromJson(jsonFile, News::class.java)
         showResult(news)
     }

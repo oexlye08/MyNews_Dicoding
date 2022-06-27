@@ -9,14 +9,15 @@ import com.bumptech.glide.Glide
 import id.my.okisulton.mynews_dicoding.databinding.ActivityDetailBinding
 import id.my.okisulton.mynews_dicoding.model.News
 import id.my.okisulton.mynews_dicoding.utils.Constants.INTENT_WITH_DATA
-import kotlinx.android.synthetic.main.content_detail.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class DetailActivity : AppCompatActivity() {
-    private var _binding : ActivityDetailBinding? = null
+    private var _binding: ActivityDetailBinding? = null
     private val binding get() = _binding!!
 
-    private var url: String =""
+    private var url: String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityDetailBinding.inflate(layoutInflater)
@@ -34,7 +35,8 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun getData() {
-        val data = intent.getParcelableExtra<News.ArticlesItem>(INTENT_WITH_DATA) as News.ArticlesItem
+        val data =
+            intent.getParcelableExtra<News.ArticlesItem>(INTENT_WITH_DATA) as News.ArticlesItem
         val urlImage = data.urlToImage
         val author = data.author
         val source = data.source?.name
@@ -45,9 +47,10 @@ class DetailActivity : AppCompatActivity() {
         val content = data.content
         url = data.url.toString()
 
-        updateUi(urlImage,author,source,favorite,publish,title,description,content,url)
+        updateUi(urlImage, author, source, favorite, publish, title, description, content, url)
     }
 
+    @SuppressLint("SimpleDateFormat")
     private fun updateUi(
         urlImage: String?,
         author: String?,
@@ -59,13 +62,20 @@ class DetailActivity : AppCompatActivity() {
         content: String?,
         url: String?
     ) {
+        val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
+        val outputFormat = SimpleDateFormat("dd-MM-yyyy HH:mm")
+        val date: Date = inputFormat.parse(publish.toString())!!
+        val formattedDate: String = outputFormat.format(date)
+
         binding.apply {
-            tvTitleDetail.text = title
-            tvAuthorDetail.text = author
-            tvSourceDetail.text = source
-            tvPublishDetail.text = publish
-            tvDescriptionDetail.text = description
-            tvContentDetail.text = content
+            includeContent.apply {
+                tvTitleDetail.text = title
+                tvAuthorDetail.text = author
+                tvSourceDetail.text = source
+                tvPublishDetail.text = formattedDate
+                tvDescriptionDetail.text = description
+                tvContentDetail.text = content
+            }
 
             collapsingToolbar.title = source
 
@@ -74,25 +84,27 @@ class DetailActivity : AppCompatActivity() {
                 .centerCrop()
                 .into(ivImageNews)
 
-            if (favorite == "1"){
+            if (favorite == "1") {
                 fabFavorite.setImageResource(R.drawable.ic_baseline_favorite_24)
             } else {
                 fabFavorite.setImageResource(R.drawable.ic_baseline_favorite_border_24)
             }
 
-            tvReadMore.setOnClickListener {
-                readMore(url)
-            }
+            includeContent.apply {
+                tvReadMore.setOnClickListener {
+                    readMore(url)
+                }
 
-            btnShareDetail.setOnClickListener {
-                shareNews(url)
+                btnShareDetail.setOnClickListener {
+                    shareNews(url)
+                }
             }
         }
     }
 
     private fun readMore(url: String?) {
-        if (!url!!.startsWith("http://") && !url.startsWith("https://")){
-            this.url = "http://$url";
+        if (!url!!.startsWith("http://") && !url.startsWith("https://")) {
+            this.url = "http://$url"
         }
 
         val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))

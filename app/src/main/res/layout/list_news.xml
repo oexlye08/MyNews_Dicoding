@@ -69,7 +69,8 @@
             android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ivSource"
-            app:srcCompat="@drawable/ic_round_access_time_24" />
+            app:srcCompat="@drawable/ic_round_access_time_24"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/tvPublishedAt"

@@ -3,6 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidCode/project/MyNews_Dicoding/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.122" />
+        <entry key="..\:/AndroidCode/project/MyNews_Dicoding/app/src/main/res/drawable/ic_round_public_24.xml" value="0.18" />
+        <entry key="..\:/AndroidCode/project/MyNews_Dicoding/app/src/main/res/layout/activity_detail.xml" value="0.1956521739130435" />
+        <entry key="..\:/AndroidCode/project/MyNews_Dicoding/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/AndroidCode/project/MyNews_Dicoding/app/src/main/res/layout/activity_profile.xml" value="0.1956521739130435" />
+        <entry key="..\:/AndroidCode/project/MyNews_Dicoding/app/src/main/res/layout/activity_splash.xml" value="0.1956521739130435" />
+        <entry key="..\:/AndroidCode/project/MyNews_Dicoding/app/src/main/res/layout/content_detail.xml" value="0.1956521739130435" />
+        <entry key="..\:/AndroidCode/project/MyNews_Dicoding/app/src/main/res/layout/content_main.xml" value="0.1956521739130435" />
+        <entry key="..\:/AndroidCode/project/MyNews_Dicoding/app/src/main/res/layout/content_profile.xml" value="0.22" />
+        <entry key="..\:/AndroidCode/project/MyNews_Dicoding/app/src/main/res/layout/fragment_favorite.xml" value="0.1956521739130435" />
+        <entry key="..\:/AndroidCode/project/MyNews_Dicoding/app/src/main/res/layout/fragment_list.xml" value="0.22" />
+        <entry key="..\:/AndroidCode/project/MyNews_Dicoding/app/src/main/res/layout/fragment_second.xml" value="0.1956521739130435" />
+        <entry key="..\:/AndroidCode/project/MyNews_Dicoding/app/src/main/res/layout/list_news.xml" value="0.33" />
+        <entry key="..\:/AndroidCode/project/MyNews_Dicoding/app/src/main/res/menu/menu_main.xml" value="0.2604166666666667" />
         <entry key="..\:/Users/osali/StudioProjects/MyNews_Dicoding/app/src/main/res/drawable/ic_baseline_favorite_border_24.xml" value="0.116" />
         <entry key="..\:/Users/osali/StudioProjects/MyNews_Dicoding/app/src/main/res/drawable/sl_favourite_24dp.xml" value="0.116" />
         <entry key="..\:/Users/osali/StudioProjects/MyNews_Dicoding/app/src/main/res/layout/activity_detail.xml" value="0.25" />
