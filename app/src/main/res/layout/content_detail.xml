@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/tvSourceDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Kompas.com" />
+
+    <TextView
+        android:id="@+id/tvTitleDetail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:justificationMode="inter_word"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSourceDetail"
+        app:layout_constraintWidth_percent=".96"
+        tools:targetApi="o"
+        tools:text="Bintik Matahari Raksasa Sedang Mengarah ke Bumi, Ini Dampaknya - detikInet" />
+
+    <TextView
+        android:id="@+id/tvDescriptionDetail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:justificationMode="inter_word"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleDetail"
+        app:layout_constraintWidth_percent=".96"
+        tools:targetApi="o"
+        tools:text="Pada Perempatfinal Piala Presiden 2022, Persib yang kebagian jadwal sore, butuh kontribusi gol pemain lokal yang hingga kini belum mencetak gol." />
+
+    <TextView
+        android:id="@+id/tvAuthorDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="@+id/tvTitleDetail"
+        app:layout_constraintTop_toBottomOf="@+id/view"
+        tools:text="Hasiolan Eko P Gultom" />
+
+    <TextView
+        android:id="@+id/tvPublishDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="@+id/tvAuthorDetail"
+        app:layout_constraintTop_toBottomOf="@+id/tvAuthorDetail"
+        tools:text="2022-06-23T09:51:52Z" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDescriptionDetail"
+        app:layout_constraintWidth_percent=".96" />
+
+    <TextView
+        android:id="@+id/tvContentDetail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:justificationMode="inter_word"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPublishDetail"
+        app:layout_constraintWidth_percent=".96"
+        tools:targetApi="o"
+        tools:text="Jadwal Perempatfinal Piala Presiden 2022, Persib Main Sore, Pemain Lokal Maung Belum Cetak Gol\r\nTRIBUNNEWS.COM - Persib Bandung dihadapkan pada situasi pemain lokal mereka yang belum bisa mencetak go… [+1734 chars]" />
+
+    <TextView
+        android:id="@+id/tvReadMore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/read_more"
+        android:textColor="?attr/colorPrimary"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="@+id/tvTitleDetail"
+        app:layout_constraintTop_toBottomOf="@+id/tvContentDetail" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnShareDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/share"
+        app:icon="@drawable/ic_baseline_share_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvReadMore" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
